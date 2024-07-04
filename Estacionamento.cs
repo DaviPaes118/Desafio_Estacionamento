@@ -15,6 +15,14 @@ namespace Desafio_Estacionamento_academiaGIS
         {
             Console.Write("Digite a placa do veículo: ");
             string placa = Console.ReadLine();
+
+            if (VeiculoEstacionado(placa))
+            {
+                Console.WriteLine("Este veículo já está estacionado.");
+                LimparTela();
+                return;
+            }
+
             Console.Write("Digite o modelo do veículo: ");
             string modelo = Console.ReadLine();
             Console.Write("Digite a marca do veículo: ");
@@ -24,6 +32,8 @@ namespace Desafio_Estacionamento_academiaGIS
             veiculos.Add(veiculo);
 
             Console.WriteLine("Veículo estacionado!");
+
+            LimparTela();
         }
 
         public void Saida()
@@ -44,6 +54,18 @@ namespace Desafio_Estacionamento_academiaGIS
             {
                 Console.WriteLine("Veículo não encontrado.");
             }
+
+            LimparTela();
+        }
+        private bool VeiculoEstacionado(string placa)
+        {
+            return veiculos.Exists(v => v.Placa == placa);
+        }
+        private void LimparTela()
+        {
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
