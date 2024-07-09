@@ -40,12 +40,12 @@ namespace Desafio_Estacionamento_academiaGIS
         {
             Console.Write("Digite a placa do veículo: ");
             string placa = Console.ReadLine();
-            Console.Write("Digite a quantidade de horas estacionado: ");
-            int horas = int.Parse(Console.ReadLine());
 
             Veiculo veiculo = veiculos.Find(v => v.Placa == placa);
             if (veiculo != null)
             {
+                Console.Write("Digite a quantidade de horas estacionado: ");
+                int horas = int.Parse(Console.ReadLine());
                 veiculos.Remove(veiculo);
                 double valorTotal = horas * precoHora;
                 Console.WriteLine($"O valor total cobrado pelo tempo de estacionamento é: R${valorTotal}");
@@ -54,7 +54,6 @@ namespace Desafio_Estacionamento_academiaGIS
             {
                 Console.WriteLine("Veículo não encontrado.");
             }
-
             LimparTela();
         }
         private bool VeiculoEstacionado(string placa)
